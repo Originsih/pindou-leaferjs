@@ -1,0 +1,62 @@
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="nav-wrap" style="padding-top:{{statusBarHeight}}px;">
+    <view class="nav-bar">
+      <view class="back-btn" bindtap="goBack">
+        <text class="back-icon">‹</text>
+      </view>
+      <view class="nav-title">图片转图纸</view>
+      <view class="nav-space"></view>
+    </view>
+  </view>
+
+  <!-- 上传区域 -->
+  <view class="upload-area" bindtap="chooseImage">
+    <block wx:if="{{!imageUrl}}">
+      <image class="camera-icon" src="/static/images/ju-icon/ee4fc00e03c3c5db3334ff48c8e230a7.png" mode="aspectFit"></image>
+      <text class="upload-text">点击上传图片</text>
+    </block>
+    <block wx:else>
+      <image class="preview-img" src="{{imageUrl}}" mode="aspectFit"></image>
+    </block>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-btns">
+    <view class="action-btn" bindtap="chooseImage">
+      <text>重新上传</text>
+    </view>
+    <view class="action-btn" bindtap="smartCutout">
+      <text>智能抠图</text>
+    </view>
+  </view>
+
+  <!-- 转换配置 -->
+  <view class="config-section">
+    <text class="config-title">转换配置</text>
+    <view class="config-list">
+      <view class="config-item" bindtap="chooseColorCount">
+        <text class="config-label">图纸色号</text>
+        <view class="config-right">
+          <text class="config-value">最多{{colorCount}}色</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+      <view class="config-item" bindtap="chooseCanvasSize">
+        <text class="config-label">画板尺寸</text>
+        <view class="config-right">
+          <text class="config-value">{{canvasSize}}x{{canvasSize}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部立即转换按钮 -->
+  <view class="bottom-wrap">
+    <view class="convert-btn {{imageUrl?'':'disabled'}}" bindtap="convertImage">
+      <text class="convert-icon">✦</text>
+      <text>立即转换</text>
+    </view>
+  </view>
+</view>

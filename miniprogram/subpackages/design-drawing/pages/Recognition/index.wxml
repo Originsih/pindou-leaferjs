@@ -1,0 +1,113 @@
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="nav-wrap" style="padding-top:{{statusBarHeight}}px;">
+    <view class="nav-bar">
+      <view class="back-btn" bindtap="goBack">
+        <text class="back-icon">‹</text>
+      </view>
+      <view class="nav-title">识别拼豆图纸</view>
+      <view class="nav-space"></view>
+    </view>
+  </view>
+
+  <!-- 步骤条 -->
+  <view class="step-bar">
+    <view class="step-item">
+      <view class="step-circle done">1</view>
+      <text class="step-text">选图</text>
+    </view>
+    <view class="step-line done"></view>
+    <view class="step-item">
+      <view class="step-circle active">2</view>
+      <text class="step-text active">裁剪</text>
+    </view>
+    <view class="step-line"></view>
+    <view class="step-item">
+      <view class="step-circle">3</view>
+      <text class="step-text">对齐</text>
+    </view>
+    <view class="step-line"></view>
+    <view class="step-item">
+      <view class="step-circle">4</view>
+      <text class="step-text">转换</text>
+    </view>
+  </view>
+
+  <!-- 图片预览区域 -->
+  <view class="preview-area">
+    <block wx:if="{{!imageUrl}}">
+      <view class="upload-placeholder" bindtap="chooseImage">
+        <image class="camera-icon" src="/static/images/ju-icon/ee4fc00e03c3c5db3334ff48c8e230a7.png" mode="aspectFit"></image>
+        <text class="upload-text">点击上传图片</text>
+      </view>
+    </block>
+    <block wx:else>
+      <!-- 核心改动：用 width/height 和 left/top 绝对定位，拒绝 transform 导致的坐标偏移 -->
+      <image 
+        class="preview-img" 
+        src="{{imageUrl}}" 
+        mode="aspectFit" 
+        style="width:{{imgW}}px; height:{{imgH}}px; left:{{imageX}}px; top:{{imageY}}px;"
+      ></image>
+      
+      <!-- 格子网格层 -->
+      <view class="grid-overlay" style="background-size:{{gridSize}}px {{gridSize}}px;"></view>
+    </block>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-btns">
+    <view class="action-btn" bindtap="chooseImage">
+      <text>重新上传</text>
+    </view>
+    <view class="action-btn" bindtap="reCrop">
+      <text>重新裁剪</text>
+    </view>
+  </view>
+
+  <!-- 对齐格子 -->
+  <view class="align-section">
+    <view class="title-row">
+      <text class="section-title">对齐格子</text>
+      <text class="tip-text" wx:if="{{gridCountTip}}">{{gridCountTip}}</text>
+    </view>
+    
+    <view class="align-grid">
+      <view class="align-btn" bindtap="scaleImage" data-type="down">
+        <text>缩小图片</text>
+      </view>
+      <view class="align-btn" bindtap="moveGrid" data-dir="up">
+        <text class="arrow-icon">↑</text>
+      </view>
+      <view class="align-btn" bindtap="scaleImage" data-type="up">
+        <text>放大图片</text>
+      </view>
+      <view class="align-btn" bindtap="moveGrid" data-dir="left">
+        <text class="arrow-icon">←</text>
+      </view>
+      <view class="align-center">
+        <text>移动对齐</text>
+      </view>
+      <view class="align-btn" bindtap="moveGrid" data-dir="right">
+        <text class="arrow-icon">→</text>
+      </view>
+      <view class="align-btn" bindtap="scaleGrid" data-type="down">
+        <text>缩小格子</text>
+      </view>
+      <view class="align-btn" bindtap="moveGrid" data-dir="down">
+        <text class="arrow-icon">↓</text>
+      </view>
+      <view class="align-btn" bindtap="scaleGrid" data-type="up">
+        <text>放大格子</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部立即识别按钮 -->
+  <view class="bottom-wrap">
+    <view class="convert-btn {{imageUrl?'':'disabled'}}" bindtap="recognize">
+      <text class="convert-icon">✦</text>
+      <text>立即识别</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,147 @@
+/* 12 常用色：常驻内嵌面板（工具栏下方），不是弹层 */
+.color-picker {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 20rpx 34rpx 30rpx;
+  gap: 24rpx;
+  box-sizing: border-box;
+}
+
+.color-picker.dark {
+  background: #1e1e1e;
+}
+
+/* 左侧当前颜色卡片 */
+.current-color-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 140rpx;
+  background: #f5f5f5;
+  border-radius: 16rpx;
+  padding: 20rpx 12rpx;
+  box-sizing: border-box;
+}
+
+.color-picker.dark .current-color-box {
+  background: #2a2a2a;
+}
+
+.color-block-large {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 12rpx;
+  border: 4rpx solid #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+  margin-bottom: 12rpx;
+}
+
+.color-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.color-code {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.color-label {
+  display: block;
+  font-size: 22rpx;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.color-picker.dark .color-code {
+  color: #eee;
+}
+
+.color-picker.dark .color-label {
+  color: #aaa;
+}
+
+/* 右侧 12 色网格 */
+.color-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14rpx;
+  min-width: 0;
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.color-block {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 6rpx;
+}
+
+.color-item.active .color-block {
+  box-shadow: inset 0 0 0 4rpx #ff6b35, 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.check-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36rpx;
+  height: 36rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  color: #ff6b35;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.color-name {
+  font-size: 20rpx;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.color-picker.dark .color-name {
+  color: #aaa;
+}
+
+.color-picker.dark .color-block {
+  box-shadow: 0 0 0 2rpx #333;
+}
+
+.color-picker.dark .color-item.active .color-block {
+  box-shadow: inset 0 0 0 4rpx #ff6b35, 0 0 0 2rpx #333;
+}
+
+.color-picker.dark .check-wrap {
+  background: rgba(30, 30, 30, 0.9);
+}

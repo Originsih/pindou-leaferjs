@@ -1,0 +1,35 @@
+<!-- 自定义导航栏 -->
+<view class="nav-wrap" style="padding-top:{{statusBarHeight}}px;">
+  <view class="nav-title">设计图纸</view>
+  <!-- 右侧预留胶囊区域 -->
+  <view class="nav-space"></view>
+</view>
+
+<!-- 页面主体 -->
+<view class="page-body">
+  <view class="card-item" bindtap="goImageToPic">
+    <image class="card-icon" src="/static/images/Icon/lcon-a.png" mode="aspectFit"></image>
+    <view class="card-info">
+      <view class="card-title">图片转图纸 <text class="hot-tag">HOT</text></view>
+      <view class="card-desc">将图片转换为像素色号图纸</view>
+    </view>
+  </view>
+
+  <view class="card-item" bindtap="goImportPic">
+    <image class="card-icon" src="/static/images/Icon/lcon-b.png"mode="aspectFit"></image>
+    <view class="card-info">
+      <view class="card-title">导入拼豆图纸 <text class="hot-tag">HOT</text></view>
+      <view class="card-desc">AI识别带色号拼豆图纸，转成可编辑像素图</view>
+    </view>
+  </view>
+
+  <view class="card-item" bindtap="goCanvas">
+    <image class="card-icon" src="/static/images/Icon/lcon-c.png" mode="aspectFit"></image>
+    <view class="card-info">
+      <view class="card-title">超级画板</view>
+      <view class="card-desc">自由创作像素画</view>
+    </view>
+  </view>
+
+  <view class="tip-text">更多功能敬请期待</view>
+</view>

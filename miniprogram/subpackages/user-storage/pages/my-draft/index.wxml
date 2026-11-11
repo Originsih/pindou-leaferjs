@@ -1,0 +1,55 @@
+<view class="page-wrap">
+  <!--提示公告条-->
+  <view wx:if="{{showTip}}" class="tip-box">
+    <image class="tip-icon" src="/static/images/Icon/Warnings.png" mode="aspectFit"></image>
+    <text class="tip-text">长按图纸可删除/重命名</text>
+    <view class="tip-close" bindtap="closeTip">×</view>
+  </view>
+
+  <!-- 草稿配额 -->
+  <view class="quota-bar {{draftList.length >= maxDrafts ? 'full' : ''}}">
+    <text class="quota-text">草稿 {{draftList.length}} / {{maxDrafts}}</text>
+    <text class="quota-hint" wx:if="{{draftList.length >= maxDrafts}}">已达上限，请删除不用的草稿</text>
+  </view>
+
+  <view class="empty" wx:if="{{draftList.length === 0}}">
+    <text>还没有草稿</text>
+  </view>
+
+  <view class="draft-list" wx:else>
+    <view
+      class="draft-item"
+      wx:for="{{draftList}}"
+      wx:key="id"
+      bindtap="openDraft"
+      bindlongpress="onLongPressDraft"
+      data-id="{{item.id}}"
+    >
+      <image
+        class="draft-thumb"
+        src="{{item.thumb}}"
+        mode="aspectFill"
+        wx:if="{{item.thumb}}"
+      ></image>
+      <view class="draft-thumb empty-thumb" wx:else>
+        <text>无预览</text>
+      </view>
+
+      <view class="draft-info">
+        <view class="draft-date">{{item.title}}</view>
+        <view class="draft-tag-wrap">
+          <text class="tag">{{item.size}}</text>
+          <text class="tag">{{item.beanCount}}颗豆</text>
+          <text class="tag" wx:if="{{item.colorCount}}">{{item.colorCount}}色</text>
+        </view>
+        <view class="draft-update">更新时间 {{item.updateTime}}</view>
+      </view>
+
+      <view class="arrow">></view>
+    </view>
+  </view>
+
+  <view class="new-draft-btn" bindtap="newDraft">
+    <text>+ 新建草稿</text>
+  </view>
+</view>

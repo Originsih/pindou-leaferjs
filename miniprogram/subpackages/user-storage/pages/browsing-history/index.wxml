@@ -1,0 +1,77 @@
+<view class="page">
+  <!-- 顶部清空栏 -->
+  <view class="action-bar" style="padding-top:{{statusBarHeight}}px;" wx:if="{{hasHistory}}">
+    <text class="tip">最近浏览了 {{leftList.length + rightList.length}} 个作品</text>
+    <text class="clear-btn" bindtap="clearAll">清空</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!hasHistory}}">
+    <text>暂无浏览记录，快去广场逛逛吧~</text>
+  </view>
+
+  <!-- 卡片滑动区域 -->
+  <scroll-view class="card-scroll" scroll-y="true" enhanced show-scrollbar="{{false}}" wx:else>
+    <view class="container">
+      <view class="waterfall-wrap">
+        <!--左列-->
+        <view class="col-left">
+          <view
+            class="paper-item"
+            wx:for="{{leftList}}"
+            wx:key="id"
+            bindtap="goDetail"
+            data-item="{{item}}"
+          >
+            <image wx:if="{{item.cover}}" class="paper-cover" src="{{item.cover}}" mode="widthFix"></image>
+            <view wx:else class="paper-cover cover-empty"><text>暂无预览</text></view>
+            <view class="title-row">
+              <view class="paper-title">{{item.title}}</view>
+              <view class="paper-meta">
+                <view class="bean-num">
+                  <image class="menu-icon-img" src="/static/images/Icon/1.png" mode="aspectFit"></image>{{item.beanCount}}
+                </view>
+              </view>
+            </view>
+            <view class="paper-author">
+              <view class="author-left">
+                <avatar src="{{item.avatar}}" name="{{item.userNick}}" size="44" />
+                <text>{{item.userNick}}</text>
+              </view>
+              <text class="author-text">{{item.useCount}}人用</text>
+            </view>
+          </view>
+        </view>
+
+        <!--右列-->
+        <view class="col-right">
+          <view
+            class="paper-item"
+            wx:for="{{rightList}}"
+            wx:key="id"
+            bindtap="goDetail"
+            data-item="{{item}}"
+          >
+            <image wx:if="{{item.cover}}" class="paper-cover" src="{{item.cover}}" mode="widthFix"></image>
+            <view wx:else class="paper-cover cover-empty"><text>暂无预览</text></view>
+            <view class="title-row">
+              <view class="paper-title">{{item.title}}</view>
+              <view class="paper-meta">
+                <view class="bean-num">
+                  <image class="menu-icon-img" src="/static/images/Icon/1.png" mode="aspectFit"></image>{{item.beanCount}}
+                </view>
+              </view>
+            </view>
+            <view class="paper-author">
+              <view class="author-left">
+                <avatar src="{{item.avatar}}" name="{{item.userNick}}" size="44" />
+                <text>{{item.userNick}}</text>
+              </view>
+              <text class="author-text">{{item.useCount}}人用</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,150 @@
+page {
+    background-color: #f9f5e9;
+  }
+    /*提示条*/
+  .tip-box{
+    margin-bottom: 24rpx;
+    background:rgba(255, 240, 194, 1);
+    border:1rpx solid rgba(250, 192, 17, 1);
+    border-radius:20rpx;
+    display:flex;
+    align-items:center;
+    padding:20rpx 24rpx;
+    flex-shrink:0;
+  }
+  .tip-icon{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 24rpx;
+  }
+  .tip-text{
+    flex:1;
+    font-size:28rpx;
+    color: rgba(250, 192, 17, 1);
+  }
+  .tip-close{
+    font-size:36rpx;
+    padding:0 8rpx;
+    color: rgba(250, 192, 17, 1);
+  }
+
+  .page-wrap {
+    padding: 24rpx;
+  }
+  
+  .draft-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24rpx;
+  }
+  
+  .draft-item {
+    background: #ffffff;
+    border-radius: 24rpx;
+    padding: 28rpx;
+    display: flex;
+    align-items: center;
+  }
+  
+  .draft-thumb {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 16rpx;
+    flex-shrink: 0;
+  }
+  
+  .draft-info {
+    flex: 1;
+    margin-left: 24rpx;
+  }
+  
+  .draft-date {
+    font-size: 36rpx;
+    color: #222222;
+    font-weight: 500;
+    margin-bottom: 12rpx;
+  }
+  
+  .draft-tag-wrap {
+    display: flex;
+    gap: 16rpx;
+    margin-bottom: 12rpx;
+  }
+  
+  .tag {
+    background-color: rgba(255, 245, 214, 1);
+    color: rgba(250, 192, 17, 1);
+    border:1rpx solid rgba(250, 192, 17, 1);
+    font-size: 26rpx;
+    padding: 6rpx 20rpx;
+    border-radius: 12rpx;
+  }
+  
+  .draft-update {
+    font-size: 28rpx;
+    color: #888888;
+  }
+  
+  .arrow {
+    font-size: 36rpx;
+    color: #cccccc;
+    flex-shrink: 0;
+  }
+  .empty {
+    text-align: center;
+    color: #999;
+    font-size: 28rpx;
+    padding: 120rpx 0;
+  }
+  
+  .empty-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    font-size: 24rpx;
+    background: #f5f5f5;
+  }
+
+  .page-wrap {
+    padding-bottom: 180rpx;
+  }
+  
+  .new-draft-btn {
+    position: fixed;
+    left: 24rpx;
+    right: 24rpx;
+    bottom: 40rpx;
+    height: 96rpx;
+    background: #ffd54f;
+    border-radius: 999rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32rpx;
+    color: #333;
+    box-shadow: 0 4rpx 12rpx rgba(255, 213, 79, 0.4);
+  }
+/* 草稿配额提示 */
+.quota-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 32rpx;
+  margin: 0 24rpx;
+}
+
+.quota-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.quota-bar.full .quota-text {
+  color: #e64340;
+  font-weight: 500;
+}
+
+.quota-hint {
+  font-size: 22rpx;
+  color: #e64340;
+}

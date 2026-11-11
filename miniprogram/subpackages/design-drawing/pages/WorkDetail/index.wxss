@@ -1,0 +1,341 @@
+page {
+  background: rgba(242, 242, 242, 1);
+}
+
+.page {
+  min-height: 100vh;
+  background: #f5f0e6;
+  padding: 24rpx 24rpx 60rpx;
+  box-sizing: border-box;
+}
+
+/* ===== 主画布卡片 ===== */
+.canvas-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 36rpx;
+}
+
+.canvas-area {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-img {
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.fav-info {
+  display: flex;
+  align-items: center;
+}
+
+.heart-icon {
+  margin-right: 12rpx;
+}
+
+.heart-text {
+  color: #ccc;
+  font-size: 40rpx;
+}
+
+.heart-icon.faved .heart-text {
+  color: #ff4d4f;
+}
+
+.fav-num {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.mode-switch {
+  display: flex;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  padding: 6rpx;
+}
+
+.mode-btn {
+  padding: 12rpx 28rpx;
+  font-size: 26rpx;
+  color: #999;
+  border-radius: 8rpx;
+}
+
+.mode-btn.active {
+  background: #fff;
+  color: #ffa500;
+  font-weight: 500;
+}
+
+/* ===== 标题行 ===== */
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+}
+
+.title-bar {
+  width: 10rpx;
+  height: 40rpx;
+  background: #ffd54f;
+  border-radius: 4rpx;
+  margin-right: 16rpx;
+}
+
+.title-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.tag-badge {
+  background: #ffd54f;
+  border-radius: 999rpx;
+  padding: 10rpx 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.tag-icon {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.tag-text {
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1;
+}
+
+/* ===== 信息卡片 ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-bottom: 36rpx;
+}
+
+.info-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+.info-icon .icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.info-num {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ===== 色号卡片 ===== */
+.color-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx 20rpx;
+  margin-bottom: 60rpx;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 20rpx 10rpx;
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.color-block {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 10rpx;
+  margin-bottom: 8rpx;
+}
+
+.color-name {
+  font-size: 22rpx;
+  color: #333;
+  line-height: 1.2;
+}
+
+.color-count {
+  font-size: 20rpx;
+  color: #999;
+  line-height: 1.2;
+}
+
+/* ===== 底部按钮 ===== */
+.bottom-actions {
+  margin-top: 40rpx;
+}
+
+.private-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30rpx;
+}
+
+.btn-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn {
+  height: 96rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  box-sizing: border-box;
+}
+
+/* 右上角「转为私有」自适应宽度 */
+.private-row .btn {
+  padding: 0 60rpx;
+}
+
+/* 下面一行三个按钮严格等宽 */
+.btn-row > .btn {
+  flex: 1 1 0%;
+  width: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.btn-yellow {
+  background: #ffd54f;
+  color: #333;
+}
+
+.btn-outline {
+  background: #fff;
+  border: 2rpx solid #ff4d4f;
+  color: #ff4d4f;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.canvas-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.empty-tip {
+  width: 100%;
+  text-align: center;
+  color: #999;
+  font-size: 26rpx;
+  padding: 40rpx 0;
+}
+.grid-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* 举报入口 */
+.report-row {
+  display: flex;
+  justify-content: center;
+  padding: 28rpx 0 10rpx;
+}
+.report-link {
+  font-size: 24rpx;
+  color: #999;
+  text-decoration: underline;
+}
+/* 审核状态提示 */
+.review-tip {
+  margin: 20rpx 24rpx 0;
+  padding: 20rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+.review-pending {
+  background: #fff8e6;
+  color: #b8860b;
+  border: 1rpx solid #ffe0a3;
+}
+.review-rejected {
+  background: #fdeceb;
+  color: #c0392b;
+  border: 1rpx solid #f8c9c4;
+}
+/* 图纸下载 */
+.grid-download {
+  display: flex;
+  justify-content: center;
+  padding: 20rpx 24rpx 0;
+}
+
+.dl-btn {
+  min-width: 380rpx;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff6b35;
+  color: #fff;
+  border-radius: 38rpx;
+  font-size: 28rpx;
+  box-shadow: 0 6rpx 16rpx rgba(255, 107, 53, 0.3);
+}
+
+.dl-btn.disabled {
+  background: #ffb79a;
+  box-shadow: none;
+}

@@ -1,0 +1,41 @@
+<view class="page-wrap">
+  <view class="empty" wx:if="{{list.length === 0 && !loading}}">
+    <text>还没有私有作品</text>
+  </view>
+
+  <view class="draft-list" wx:else>
+    <view
+      class="draft-item"
+      wx:for="{{list}}"
+      wx:key="id"
+      bindtap="openWork"
+      bindlongpress="deleteWork"
+      data-id="{{item.id}}"
+    >
+      <image
+        class="draft-thumb"
+        src="{{item.thumb}}"
+        mode="aspectFill"
+        wx:if="{{item.thumb}}"
+      ></image>
+      <view class="draft-thumb empty-thumb" wx:else>
+        <text>无预览</text>
+      </view>
+
+      <view class="draft-info">
+        <view class="draft-title">{{item.title}}</view>
+        <view class="draft-tag-wrap">
+          <text class="tag">{{item.size}}</text>
+          <text class="tag">{{item.beanCount}}颗豆</text>
+          <text class="tag" wx:if="{{item.colorCount}}">{{item.colorCount}}色</text>
+        </view>
+        <view class="draft-update">更新时间 {{item.updateTime}}</view>
+      </view>
+
+      <view class="arrow">></view>
+    </view>
+  </view>
+
+  <view class="loading-tip" wx:if="{{loading}}">加载中...</view>
+  <view class="loading-tip" wx:if="{{!hasMore && list.length > 0}}">没有更多了</view>
+</view>

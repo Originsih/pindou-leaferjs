@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "作品详情",
+  "navigationBarBackgroundColor": "#f5f0e6",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f5f0e6",
+  "usingComponents": {
+    "bead-grid": "/subpackages/design-drawing/components/preview/bead-grid/index"
+  }
+}

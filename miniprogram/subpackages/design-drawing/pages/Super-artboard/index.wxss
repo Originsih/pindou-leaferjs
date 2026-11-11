@@ -1,0 +1,126 @@
+page {
+    background: rgba(242, 242, 242, 1);
+  }
+
+.page-container {
+    min-height: 100vh;
+    background: #f5f5f5;
+    transition: background 0.3s;
+  }
+  
+.page-container.dark-mode {
+    background: #121212;
+  }
+
+.editor-toolbar{
+    height: 102rpx;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    padding:16rpx 24rpx;
+    border-bottom:1rpx solid #eee;
+}
+.toolbar-left,
+.toolbar-right{
+    display:flex;
+    align-items:center;
+
+}
+.tool-btn{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-width:80rpx;
+    min-height: 80rpx;
+    border-radius:12rpx;
+    border:1rpx solid #ddd;
+    margin-right: 16rpx;
+    height: 60rpx;
+}
+.tool-btn.active{
+    background:#ffe8dd;
+}
+.tool-btn.disabled{
+    opacity:0.3;
+}
+.tool-icon{
+    width: 32rpx;
+    height: 32rpx;
+    font-size:36rpx;
+    color:#333;
+    line-height:1;
+    margin-bottom:4rpx;
+}
+.tool-name{
+    font-size:20rpx;
+    color:#666;
+}
+/* 清空按钮红色 */
+.clear-btn .tool-icon,
+.clear-btn .tool-name{
+    color:#ff4d4f;
+}
+/* ========== 画布容器（定位缩放按钮用） ========== */
+.canvas-wrap {
+  position: relative;
+  margin: 30rpx auto;
+}
+
+.zoom-right {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.save-btn {
+  height: 56rpx;
+  padding: 0 24rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;   /* 关键：文字不换行 */
+  flex-shrink: 0;        /* 关键：不被父容器压缩 */
+}
+
+.save-icon {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ========== 右下角缩放按钮 ========== */
+.zoom-box{
+    width:680rpx;
+    margin-left: 34rpx;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.zoom-controls{
+    display:flex;
+    gap:12rpx;
+}
+.zoom-btn{
+    width:56rpx;
+    height:56rpx;
+    background:rgba(255, 255, 255, 1);
+    border-radius:10rpx;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32rpx;
+    color:#333;
+}
+
+  .zoom-icon {
+    font-size: 40rpx;
+    color: #333;
+    line-height: 1;
+    font-weight: 300;
+  }

@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="qrcode-card">
+    <view class="qr-title">我的专属码</view>
+    <view class="qr-subtitle">长按识别 / 保存分享给好友</view>
+    
+    <!-- 二维码展示区域 -->
+    <view class="qr-img-box" wx:if="{{qrCodeUrl}}">
+      <image 
+        class="qr-img" 
+        src="{{qrCodeUrl}}" 
+        mode="aspectFit" 
+        show-menu-by-longpress="{{true}}"
+      ></image>
+    </view>
+    <view class="qr-loading" wx:else>
+      <text>正在生成专属码...</text>
+    </view>
+    
+    <view class="user-info" wx:if="{{shortId}}">
+      <text>ID: {{shortId}}</text>
+    </view>
+  </view>
+
+  <view class="action-wrap">
+    <button class="save-btn" bindtap="saveQrCode">保存到相册</button>
+  </view>
+</view>

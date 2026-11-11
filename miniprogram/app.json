@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/drawing/index",
+    "pages/design/index",
+    "pages/user/index"
+  ],
+  "subpackages": [
+    {
+      "root": "subpackages/user-storage",
+      "pages": [
+        "pages/my-draft/index",
+        "pages/browsing-history/index",
+        "pages/my-collection/index",
+        "pages/Public-works/index",
+        "pages/Private-works/index",
+        "pages/settings/index",
+        "pages/mini-code/index",
+        "pages/admin/index"
+      ]
+    },
+    {
+      "root": "subpackages/design-drawing",
+      "pages": [
+        "pages/Super-artboard/index",
+        "pages/Recognition/index",
+        "pages/converter/index",
+        "pages/Release/index",
+        "pages/WorkDetail/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "拼豆图纸工坊",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/drawing/index",
+        "text": "图纸"
+      },
+      {
+        "pagePath": "pages/design/index",
+        "text": "设计"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

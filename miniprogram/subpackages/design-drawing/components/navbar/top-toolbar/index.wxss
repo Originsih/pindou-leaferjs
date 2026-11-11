@@ -1,0 +1,70 @@
+.editor-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    padding:16rpx 24rpx;
+    border-bottom:1rpx solid #eee;
+}
+.toolbar-left,
+.toolbar-right{
+    display:flex;
+    align-items:center;
+}
+.tool-btn{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-width:80rpx;
+    min-height:80rpx;
+    border-radius:12rpx;
+    margin-right:16rpx;
+    padding:8rpx 12rpx;
+}
+.tool-btn:last-child{
+    margin-right:0;
+}
+.tool-btn.active{
+    background:#ffe8dd;
+}
+.tool-btn.disabled{
+    opacity:0.3;
+}
+.tool-icon{
+    width:36rpx;
+    height:36rpx;
+    margin-bottom:4rpx;
+}
+.tool-name{
+    font-size:20rpx;
+    color:#666;
+}
+.clear-btn .tool-icon,
+.clear-btn .tool-name{
+    color:#ff4d4f;
+}
+/* 黑夜模式 */
+.editor-toolbar.dark {
+  background: #1e1e1e;
+  border-bottom-color: #333;
+}
+
+.editor-toolbar.dark .tool-name {
+  color: #aaa;
+}
+
+.editor-toolbar.dark .tool-btn.active {
+  background: #3a2a1a;
+}
+
+.editor-toolbar.dark .tool-icon {
+  /* 如果图标是深色的，需要滤镜反转，或者换图标 */
+  filter: invert(1);
+}
+
+.editor-toolbar.dark .clear-btn .tool-icon,
+.editor-toolbar.dark .clear-btn .tool-name {
+  color: #ff6b6b;
+  filter: none;
+}

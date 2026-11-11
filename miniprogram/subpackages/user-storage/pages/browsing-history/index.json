@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "浏览记录",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "avatar": "/components/avatar/index"
+  }
+}

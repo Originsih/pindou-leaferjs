@@ -1,0 +1,117 @@
+<view class="page-container {{isDarkMode?'dark-mode':''}}">
+  <navbar
+    bgColor="{{isDarkMode?'#1a1a1a':'#fff'}}"
+    showBack="{{true}}"
+    gridSize="{{gridSize}}"
+    isDarkMode="{{isDarkMode}}"
+    canPublish="{{canPublish}}"
+    bind:changeSize="changeSize"
+    bind:toggleDark="toggleDark"
+    bind:preview="previewPaper"
+    bind:publish="publishWork"
+  />
+
+  <top-toolbar
+    can-undo="{{canUndo}}"
+    can-redo="{{canRedo}}"
+    current-tool="{{currentTool}}"
+    is-dark-mode="{{isDarkMode}}"
+    bind:undo="undo"
+    bind:redo="redo"
+    bind:reset="resetView"
+    bind:flip="flipCanvas"
+    bind:switchTool="switchTool"
+    bind:clear="clearCanvas"
+  />
+
+  <!-- 画布区域：用 wx:if 控制挂载，避免原生 canvas 盖住弹窗 -->
+  <view
+    class="canvas-wrap"
+    style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;"
+    wx:if="{{showCanvas}}"
+  >
+    <canvas
+      id="leaferCanvas"
+      type="2d"
+      style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;display:block;background:{{isDarkMode?'#2a2a2a':'#ffffff'}};"
+      catchtouchstart="receiveEvent"
+      catchtouchmove="receiveEvent"
+      catchtouchend="receiveEvent"
+      catchtouchcancel="receiveEvent"
+    ></canvas>
+  </view>
+  <!-- 占位：防止工具条跳位 -->
+  <view
+    wx:else
+    style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;margin:30rpx auto;"
+  ></view>
+
+<view class="zoom-box">
+  <view class="zoom-left">
+    <color-lib-button
+      current-color="{{currentColor}}"
+      is-dark-mode="{{isDarkMode}}"
+      bind:open="openColorLibrary"
+    />
+  </view>
+
+  <view class="zoom-right">
+    <!-- 保存草稿按钮 -->
+    <view class="save-btn" bindtap="saveDraftManual">
+      <text class="save-icon">保存草稿</text>
+    </view>
+
+    <!-- 缩放按钮 -->
+    <view class="zoom-controls">
+      <view class="zoom-btn" bindtap="zoomOut">
+        <text class="zoom-icon">−</text>
+      </view>
+      <view class="zoom-btn" bindtap="zoomIn">
+        <text class="zoom-icon">+</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <pixel-canvas
+    rows="{{gridSize}}"
+    cols="{{gridSize}}"
+    canvas-width="{{canvasWidth}}"
+    canvas-height="{{canvasHeight}}"
+    current-color="{{currentColor}}"
+    tool="{{currentTool}}"
+    brush-size="{{brushSize}}"
+    is-dark-mode="{{isDarkMode}}"
+    bind:gridChange="onGridChange"
+    bind:pickColor="onPickColor"
+    id="pixelCanvas"
+  />
+
+  <editor-toolbar
+    brush-size="{{brushSize}}"
+    current-tool="{{currentTool}}"
+    is-dark-mode="{{isDarkMode}}"
+    bind:changeTool="onToolChange"
+    bind:changeSize="onSizeChange"
+  />
+
+<!-- 12 常用色：常驻显示在工具栏下方 -->
+<color-picker
+  id="colorPicker"
+  current-color="{{currentColor}}"
+  current-color-name="{{currentColorName}}"
+  is-dark-mode="{{isDarkMode}}"
+  bind:selectColor="onColorSelect"
+/>
+
+
+  <!-- 221 全色板 -->
+  <color-library
+    visible="{{showColorLibrary}}"
+    current-color="{{currentColor}}"
+    current-color-name="{{currentColorName}}"
+    is-dark-mode="{{isDarkMode}}"
+    bind:selectColor="onColorSelect"
+    bind:close="onCloseColorLibrary"
+  />
+</view>

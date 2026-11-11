@@ -1,0 +1,38 @@
+<view class="lib-mask" wx:if="{{visible}}" bindtap="closeLibrary"></view>
+<view class="lib-popup {{visible?'show':''}} {{isDarkMode?'dark':''}}">
+  <!-- 顶部分类 -->
+  <scroll-view class="group-tabs" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="tab-list">
+      <view
+        class="tab-item {{currentGroup===item?'active':''}}"
+        wx:for="{{groups}}"
+        wx:key="*this"
+        bindtap="switchGroup"
+        data-group="{{item}}"
+      >
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 颜色网格 -->
+  <scroll-view class="lib-color-list" scroll-y enhanced>
+    <view class="lib-color-grid">
+      <view
+        class="lib-color-item {{currentColor===item.color?'active':''}}"
+        wx:for="{{colorList}}"
+        wx:key="code"
+        bindtap="onSelect"
+        data-color="{{item.color}}"
+        data-code="{{item.code}}"
+      >
+        <view class="lib-color-block" style="background:{{item.color}};">
+          <view class="lib-check-wrap" wx:if="{{currentColor===item.color}}">
+            <text class="lib-check-icon">✓</text>
+          </view>
+        </view>
+        <text class="lib-color-name">{{item.code}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

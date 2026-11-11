@@ -1,0 +1,28 @@
+<view class="editor-toolbar {{isDarkMode?'dark':''}}">
+  <view class="toolbar-left">
+    <view class="tool-btn {{canUndo?'':'disabled'}}" bindtap="onUndo">
+      <image class="tool-icon" src="/static/images/arboard/Left.png" mode="aspectFit"></image>
+    </view>
+    <view class="tool-btn {{canRedo?'':'disabled'}}" bindtap="onRedo">
+      <image class="tool-icon" src="/static/images/arboard/right.png" mode="aspectFit"></image>
+    </view>
+  </view>
+  <view class="toolbar-right">
+    <view class="tool-btn" bindtap="onReset">
+      <image class="tool-icon" src="/static/images/arboard/Reset.png" mode="aspectFit"></image>
+      <text class="tool-name">复位</text>
+    </view>
+    <view class="tool-btn" bindtap="onFlip">
+      <image class="tool-icon" src="/static/images/arboard/Flip-over.png" mode="aspectFit"></image>
+      <text class="tool-name">翻转</text>
+    </view>
+    <view class="tool-btn {{currentTool==='move'?'active':''}}" bindtap="onSwitchTool" data-tool="move">
+      <image class="tool-icon" src="/static/images/arboard/Moving.png" mode="aspectFit"></image>
+      <text class="tool-name">移动</text>
+    </view>
+    <view class="tool-btn clear-btn" bindtap="onClear">
+      <image class="tool-icon" src="/static/images/arboard/Clear-out.png" mode="aspectFit"></image>
+      <text class="tool-name">清空</text>
+    </view>
+  </view>
+</view>

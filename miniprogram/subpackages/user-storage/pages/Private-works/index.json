@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "私有作品",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f5f0e6",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

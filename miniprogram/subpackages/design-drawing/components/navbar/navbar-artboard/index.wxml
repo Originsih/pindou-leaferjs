@@ -1,0 +1,20 @@
+<view class="nav-wrap" style="padding-top:{{statusBarHeight}}px;background:{{bgColor}};">
+  <view class="nav-bar {{isDarkMode?'dark':''}}">
+    <view class="back-btn" wx:if="{{showBack}}" bindtap="goBack">
+      <image class="back-icon" src="/static/images/arboard/f504c1a3-6f39-4a38-a4db-88ca828c8d2b.png" mode="aspectFit"></image>
+    </view>
+    <view class="nav-btn size-btn" bindtap="onChangeSize">
+      <text>{{gridSize}} x {{gridSize}}</text>
+    </view>
+    <view class="nav-btn icon-btn" bindtap="onToggleDark">
+      <image class="back-icon-img" src="/static/images/arboard/Light.png" mode="aspectFit"></image>
+    </view>
+    <view class="nav-btn text-btn" bindtap="onPreview">
+      <text>图纸预览</text>
+    </view>
+    <view class="nav-btn text-btn" wx:if="{{canPublish}}" bindtap="onPublish">
+      <text>发布作品</text>
+    </view>
+    <view class="nav-space"></view>
+  </view>
+</view>

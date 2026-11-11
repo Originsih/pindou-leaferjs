@@ -1,0 +1,109 @@
+<view class="page">
+  <!-- 顶部导航栏 -->
+  <view class="nav-wrap" style="padding-top:{{statusBarHeight}}px;">
+    <view class="nav-logo">
+      <image src="/static/images/logo/logo.png" style="width:260rpx; height:40rpx;" mode="aspectFit"></image>
+    </view>
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        type="text"
+        confirm-type="search"
+        placeholder="搜图纸"
+        placeholder-class="search-ph"
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearchConfirm"
+      />
+      <text class="search-clear" wx:if="{{keyword}}" bindtap="exitSearch">✕</text>
+    </view>
+    <view class="nav-space"></view>
+  </view>
+
+  <!-- 卡片滑动区域：绑定触底加载事件 -->
+  <scroll-view 
+    class="card-scroll" 
+    scroll-y="true" 
+    enhanced 
+    show-scrollbar="{{false}}"
+    bindscrolltolower="onScrollToLower"
+  >
+    <view class="container">
+      <!-- 左右分开两列瀑布流 -->
+      <view class="waterfall-wrap">
+        
+        <!-- 左列 -->
+        <view class="col-left">
+          <view
+            class="paper-item"
+            wx:for="{{leftList}}"
+            wx:key="id"
+            bindtap="goDetail"
+            bindlongpress="onLongPressWork"
+            data-item="{{item}}"
+          >
+            <image wx:if="{{item.cover}}" class="paper-cover" src="{{item.cover}}" mode="widthFix" lazy-load></image>
+            <view wx:else class="paper-cover cover-empty"><text>暂无预览</text></view>
+            
+            <view class="title-row">
+              <view class="paper-title">{{item.title}}</view>
+              <view class="paper-meta">
+                <view class="bean-num">
+                  <image class="menu-icon-img" src="/static/images/Icon/1.png" mode="aspectFit"></image>{{item.beanCount}}
+                </view>
+              </view>
+            </view>
+            <view class="paper-author">
+              <view class="author-left">
+                <avatar src="{{item.avatar}}" name="{{item.userNick}}" size="44" />
+                <text>{{item.userNick}}</text>
+              </view>
+              <text class="author-text">{{item.useCount}}人用</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 右列 -->
+        <view class="col-right">
+          <view
+            class="paper-item"
+            wx:for="{{rightList}}"
+            wx:key="id"
+            bindtap="goDetail"
+            bindlongpress="onLongPressWork"
+            data-item="{{item}}"
+          >
+            <image wx:if="{{item.cover}}" class="paper-cover" src="{{item.cover}}" mode="widthFix" lazy-load></image>
+            <view wx:else class="paper-cover cover-empty"><text>暂无预览</text></view>
+            
+            <view class="title-row">
+              <view class="paper-title">{{item.title}}</view>
+              <view class="paper-meta">
+                <view class="bean-num">
+                  <image class="menu-icon-img" src="/static/images/Icon/1.png" mode="aspectFit"></image>{{item.beanCount}}
+                </view>
+              </view>
+            </view>
+            <view class="paper-author">
+              <view class="author-left">
+                <avatar src="{{item.avatar}}" name="{{item.userNick}}" size="44" />
+                <text>{{item.userNick}}</text>
+              </view>
+              <text class="author-text">{{item.useCount}}人用</text>
+            </view>
+          </view>
+        </view>
+        
+      </view>
+      
+      <!-- 底部加载状态提示 -->
+      <view class="loading-tip" wx:if="{{searching}}">搜索中...</view>
+      <view class="loading-tip" wx:elif="{{searchEmpty}}">没有找到相关图纸，换个关键词试试</view>
+      <view class="loading-tip" wx:elif="{{searchMode && !searchHasMore && leftList.length > 0}}">没有更多了</view>
+      <view class="loading-tip" wx:elif="{{!searchMode && loading}}">加载中...</view>
+      <view class="loading-tip" wx:elif="{{!searchMode && !hasMore && leftList.length > 0}}">没有更多啦~</view>
+      
+    </view>
+  </scroll-view>
+</view>

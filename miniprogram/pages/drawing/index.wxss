@@ -1,0 +1,205 @@
+page {
+  height: 100%;
+  background-color: #f9f5e9;
+}
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== 导航栏 ========== */
+.nav-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16rpx 24rpx;
+}
+.nav-logo {
+  flex-shrink: 0;
+}
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #f3f3f3;
+  border-radius: 99rpx;
+  padding: 0 28rpx;
+  margin: 0 30rpx;
+  height: 68rpx;
+}
+
+.search-icon {
+  font-size: 26rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 28rpx;
+  color: #333;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.search-ph {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.search-clear {
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: #999;
+  padding: 0 4rpx 0 16rpx;
+  line-height: 1;
+}
+.nav-space {
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+/* ========== 滚动区域 ========== */
+.card-scroll {
+  flex: 1;
+  height: 0;
+  min-height: 0;
+}
+.container {
+  padding: 24rpx;
+  padding-bottom: 200rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ================= 核心修复：瀑布流 ================= */
+.waterfall-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%; /* 确保占满屏幕 */
+}
+
+/* 强制宽度，防止被内部文字或图片挤压 */
+.col-left,
+.col-right {
+  width: 48.5%; 
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  flex-shrink: 0; /* 禁止 flex 自动收缩 */
+}
+
+.paper-item {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  padding: 3rpx;
+  width: 100%; /* 卡片撑满列宽 */
+}
+
+/* 图片强制 100% 宽度，防止原图太宽撑破 */
+.paper-cover {
+  width: 100% !important;
+  display: block;
+  border-radius: 12rpx 12rpx 0 0;
+}
+
+/* 没有封面时的占位，避免出现破图 */
+.cover-empty {
+  height: 240rpx;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #bbb;
+  box-sizing: border-box;
+}
+
+/* 标题行 */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+.paper-title {
+  font-size: 30rpx;
+  padding: 16rpx 12rpx 8rpx 16rpx;
+  font-weight: 500;
+  line-height: 1.3;
+  flex: 1;
+  min-width: 0; /* 解决文字撑破的关键 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.paper-meta {
+  flex-shrink: 0;
+  padding-top: 21rpx;
+}
+.bean-num {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 24rpx;
+  color: #dd4444;
+  padding: 0 16rpx 0 0;
+}
+.menu-icon-img {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 4rpx;
+  flex-shrink: 0;
+}
+
+/* 作者行 */
+.paper-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20rpx;
+  color: #777;
+  padding: 12rpx 16rpx 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.author-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0; /* 解决头像名字撑破的关键 */
+  overflow: hidden;
+}
+.author-avatar {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+  flex-shrink: 0;
+  background: #eee;
+}
+.author-left text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.author-text {
+  font-size: 20rpx;
+  color: rgba(48, 63, 82, 1);
+  flex-shrink: 0;
+}
+
+/* 底部提示 */
+.loading-tip { 
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  padding: 30rpx 0;
+}

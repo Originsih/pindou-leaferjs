@@ -1,0 +1,57 @@
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 999;
+  }
+  
+  .tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-box {
+    position: relative;
+    width: 48rpx;
+    height: 48rpx;
+    margin-bottom: 4rpx;
+  }
+  
+  .icon {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text {
+    font-size: 20rpx;
+    color: #666;
+  }
+  
+  .active .text {
+    color: rgba(255, 210, 74, 1);  /* 拼豆主题色 */
+  }
+  
+  /* 未读消息气泡 */
+  .badge {
+    position: absolute;
+    top: -8rpx;
+    right: -8rpx;
+    background-color: #ff3b30;
+    color: #fff;
+    border-radius: 20rpx;
+    padding: 0 6rpx;
+    font-size: 18rpx;
+    line-height: 1.4;
+    min-width: 20rpx;
+    text-align: center;
+    z-index: 2;
+  }

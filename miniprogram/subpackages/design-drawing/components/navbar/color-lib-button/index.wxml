@@ -1,0 +1,4 @@
+<view class="color-lib-btn {{isDarkMode?'dark':''}}" bindtap="onTap">
+  <view class="color-lib-dot" style="background:{{currentColor}};"></view>
+  <text class="color-lib-text">颜色库</text>
+</view>

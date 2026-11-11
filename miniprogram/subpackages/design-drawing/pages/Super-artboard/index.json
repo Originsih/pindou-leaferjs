@@ -1,0 +1,12 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+      "navbar": "/subpackages/design-drawing/components/navbar/navbar-artboard/index",
+      "pixel-canvas": "/subpackages/design-drawing/components/navbar/PixelCanvas/index",
+      "editor-toolbar": "/subpackages/design-drawing/components/navbar/editor-toolbar/index",
+      "color-picker": "/subpackages/design-drawing/components/navbar/color-picker/index",
+      "top-toolbar": "/subpackages/design-drawing/components/navbar/top-toolbar/index",
+      "color-lib-button": "/subpackages/design-drawing/components/navbar/color-lib-button/index",
+      "color-library": "/subpackages/design-drawing/components/navbar/color-library/index"
+    }
+  }

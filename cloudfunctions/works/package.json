@@ -1,0 +1,10 @@
+{
+  "name": "works",
+  "version": "1.0.0",
+  "description": "作品与草稿的统一读写入口（含归属校验、计数、收藏）",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

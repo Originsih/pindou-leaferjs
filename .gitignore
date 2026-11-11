@@ -1,0 +1,29 @@
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# Node.js
+node_modules/
+
+# 微信开发者工具（含本地个性化配置）
+project.private.config.json
+
+# 构建产物（由「工具 → 构建 npm」重新生成）
+miniprogram/miniprogram_npm/
+
+# 云函数本地私有配置（含管理口令 / openid，绝不提交）
+# 模板见 cloudfunctions/works/config.local.example.js
+cloudfunctions/*/config.local.js
+cloudfunctions/*/config.local.json
+
+# 日志
+*.log
+npm-debug.log*

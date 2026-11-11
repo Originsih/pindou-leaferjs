@@ -1,0 +1,171 @@
+<view class="page">
+  <!-- 主画布卡片 -->
+  <view class="canvas-card">
+    <view class="canvas-area">
+      <!-- 预览模式：显示图片 -->
+      <block wx:if="{{viewMode === 'preview'}}">
+        <image
+          wx:if="{{workImage}}"
+          class="canvas-img"
+          src="{{workImage}}"
+          mode="aspectFit"
+        ></image>
+        <view wx:else class="canvas-empty">
+          <text>暂无预览</text>
+        </view>
+      </block>
+
+      <!-- 图纸模式 -->
+      <view wx:else class="grid-wrapper">
+        <bead-grid
+          id="beadGrid"
+          grid-str="{{gridStr}}"
+          grid-size="{{gridSize}}"
+          bind:ready="onGridReady"
+        />
+      </view>
+    </view>
+
+    <!-- 图纸模式：下载到相册 -->
+    <view class="grid-download" wx:if="{{viewMode === 'grid'}}">
+      <view
+        class="dl-btn {{downloading ? 'disabled' : ''}}"
+        bindtap="downloadGrid"
+      >
+        <text>{{downloading ? '正在生成图纸…' : '下载图纸到相册'}}</text>
+      </view>
+    </view>
+
+    <view class="canvas-bottom">
+      <!-- 云端模式：显示收藏 -->
+      <view class="fav-info" wx:if="{{mode === 'cloud'}}">
+        <view class="heart-icon {{isFav?'faved':''}}" bindtap="toggleFav">
+          <text class="heart-text">♥</text>
+        </view>
+        <text class="fav-num">{{favCount}}人收藏</text>
+      </view>
+      <!-- 草稿模式：显示状态 -->
+      <view class="fav-info" wx:else>
+        <text class="fav-num">{{isPublished ? '已发布作品' : '草稿 · 未发布'}}</text>
+      </view>
+
+      <view class="mode-switch">
+        <view class="mode-btn {{viewMode==='preview'?'active':''}}" bindtap="switchMode" data-mode="preview">预览模式</view>
+        <view class="mode-btn {{viewMode==='grid'?'active':''}}" bindtap="switchMode" data-mode="grid">图纸模式</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 审核状态提示（仅作者可见） -->
+  <view class="review-tip review-pending" wx:if="{{isOwner && reviewStatus === 'pending'}}">
+    <text>该作品正在审核中，审核通过后才会出现在广场</text>
+  </view>
+  <view class="review-tip review-rejected" wx:if="{{isOwner && reviewStatus === 'rejected'}}">
+    <text>审核未通过：{{reviewNote || '内容不符合社区规范'}}</text>
+  </view>
+
+  <!-- 图纸信息 -->
+  <view class="section-title-row">
+    <view class="section-title">
+      <view class="title-bar"></view>
+      <text class="title-text">图纸信息</text>
+    </view>
+    <view class="tag-badge">
+      <image class="tag-icon" src="/static/images/Icon/64.png" mode="aspectFit"></image>
+      <text class="tag-text">{{gridSize}}×{{gridSize}}</text>
+    </view>
+  </view>
+
+  <view class="info-grid">
+    <view class="info-card">
+      <view class="info-icon green">
+        <image class="icon" src="/static/images/Icon/1.png" style="width: 40rpx; height: 40rpx;" mode="aspectFit"></image>
+      </view>
+      <text class="info-label">共包含 <text class="info-num">{{totalBeans}}</text> 颗</text>
+    </view>
+    <view class="info-card">
+      <view class="info-icon green">
+        <image class="icon" src="/static/images/Icon/3.png" style="width: 40rpx; height: 40rpx;" mode="aspectFit"></image>
+      </view>
+      <text class="info-label">预计要 <text class="info-num">{{estimateHours}}</text> 小时</text>
+    </view>
+    <view class="info-card">
+      <view class="info-icon green">
+        <image class="icon" src="/static/images/Icon/4.png" style="width: 40rpx; height: 40rpx;" mode="aspectFit"></image>
+      </view>
+      <text class="info-label">共包含 <text class="info-num">{{colorCount}}</text> 种色号</text>
+    </view>
+    <view class="info-card">
+      <view class="info-icon green">
+        <image class="icon" src="/static/images/Icon/2.png" style="width: 40rpx; height: 40rpx;" mode="aspectFit"></image>
+      </view>
+      <text class="info-label">该图有 <text class="info-num">{{madeCount}}</text> 人拼</text>
+    </view>
+  </view>
+
+  <!-- 包含色号 -->
+  <view class="section-title-row">
+    <view class="section-title">
+      <view class="title-bar"></view>
+      <text class="title-text">包含色号</text>
+    </view>
+    <view class="tag-badge">
+      <image class="tag-icon" src="/static/images/Icon/211.png" mode="aspectFit"></image>
+      <text class="tag-text">{{colorCount}}色</text>
+    </view>
+  </view>
+
+  <view class="color-card">
+    <view class="color-grid">
+      <view class="color-item" wx:for="{{colorList}}" wx:key="name">
+        <view class="color-block" style="background:{{item.color}};"></view>
+        <text class="color-name">{{item.name}}</text>
+        <text class="color-count">{{item.count}}颗</text>
+      </view>
+    </view>
+    <view class="empty-tip" wx:if="{{colorList.length === 0}}">
+      <text>暂无数据</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-actions">
+    <!-- 情况 A：还没真正发布过的草稿 -->
+    <block wx:if="{{!isPublished}}">
+      <view class="private-row">
+        <view class="btn btn-yellow" bindtap="goPublish">去发布作品</view>
+      </view>
+      <view class="btn-row" style="margin-top: 20rpx;">
+        <view class="btn btn-outline" bindtap="deleteDraft">删除草稿</view>
+        <view class="btn btn-yellow" bindtap="editDraft">继续编辑</view>
+      </view>
+    </block>
+
+    <!-- 情况 B：已经正式发布过的作品 -->
+    <block wx:else>
+      <!-- 1. 如果是作者本人，显示管理按钮 -->
+      <block wx:if="{{isOwner}}">
+        <view class="btn-row">
+          <view class="btn btn-outline" bindtap="deleteWork">删除作品</view>
+          <view class="btn btn-yellow" bindtap="editWork">编辑作品</view>
+          
+          <!-- 状态切换 -->
+          <view class="btn btn-yellow" wx:if="{{isPublic}}" bindtap="toPrivate">转为私有</view>
+          <view class="btn btn-outline" wx:else bindtap="toPublic">转为公开</view>
+        </view>
+      </block>
+
+      <!-- 2. 二创按钮：所有查看该作品的人都可以复制 -->
+      <view class="btn-row" style="margin-top: 20rpx;">
+        <view class="btn btn-yellow" style="width: 100%;" bindtap="copyWork">
+          <text>✨ 使用此图纸（二创）</text>
+        </view>
+      </view>
+
+      <!-- 3. 举报入口（非作者可见） -->
+      <view class="report-row" wx:if="{{mode === 'cloud' && !isOwner}}">
+        <text class="report-link" bindtap="reportWork">举报该作品</text>
+      </view>
+    </block>
+  </view>
+</view>

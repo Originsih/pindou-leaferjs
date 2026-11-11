@@ -1,0 +1,33 @@
+<view class="bottom-toolbar {{isDarkMode?'dark':''}}">
+  <!-- 左侧：画笔大小 -->
+  <view class="brush-group">
+    <view class="brush-size">
+      <view class="size-btn" bindtap="onDecrease">
+        <text>−</text>
+      </view>
+      <text class="size-num">{{brushSize}}</text>
+      <view class="size-btn" bindtap="onIncrease">
+        <text>+</text>
+      </view>
+    </view>
+    <text class="brush-label">操作像素</text>
+  </view>
+
+  <!-- 右侧：工具列表 -->
+  <scroll-view class="tool-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="tool-list">
+      <view
+        class="tool-item {{currentTool===item.key?'active':''}}"
+        wx:for="{{toolList}}"
+        wx:key="key"
+        bindtap="onSwitchTool"
+        data-tool="{{item.key}}"
+      >
+        <view class="tool-icon-wrap">
+          <image class="tool-icon-img" src="{{item.icon}}" mode="aspectFit"></image>
+        </view>
+        <text class="tool-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
